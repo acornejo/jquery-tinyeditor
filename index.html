@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tiny, opensource, Bootstrap WYSIWYG rich text editor from MindMup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="opensource rich wysiwyg text editor jquery bootstrap execCommand html5" />
+    <meta name="description" content="This tiny jQuery Bootstrap WYSIWYG plugin turns any DIV into a HTML5 rich text editor" />
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="index.css" rel="stylesheet">
+    <script src="jquery.tinyeditor.js"></script>
+  </head>
+  <body>
+
+<div class="container">
+	<div id="alerts"></div>
+	<hr/>
+
+  <div class="well" id="toolbar">
+    <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+      <div class="btn-group">
+        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-font"></i>&nbsp;<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a data-edit="formatBlock <h1>"><h1>H1</h1></a></li>
+          <li><a data-edit="formatBlock <h2>"><h2>H2</h2></a></li>
+          <li><a data-edit="formatBlock <h3>"><h3>H3</h3></a></li>
+          <li><a data-edit="formatBlock <h4>"><h4>H4</h4></a></li>
+          <li><a data-edit="formatBlock <h5>"><h5>H5</h5></a></li>
+          <li><a data-edit="formatBlock <h6>"><h6>H6</h6></a></li>
+          <li><a data-edit="formatBlock <p>"><p>p</p></a></li>
+        </ul>
+      </div>
+
+      <div class="btn-group">
+        <a class="btn btn-default" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+        <a class="btn btn-default" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+      </div>
+
+      <div class="btn-group">
+        <a class="btn btn-default" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
+        <a class="btn btn-default" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
+        <a class="btn btn-default" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+        <a class="btn btn-default" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+      </div>
+
+      <div class="btn-group">
+        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+		    <div class="dropdown-menu" style="padding: 5px 5px;">
+          <div class="input-group">
+            <input class="form-control" placeholder="enter url" type="text" data-edit="createLink" style="width: 200px;"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><i class="fa fa-check"></i></button>
+            </span>
+          </div>
+        </div>
+        <a class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-unlink"></i></a>
+      </div>
+      
+      <div class="btn-group">
+        <a class="btn btn-default" data-edit="chooseFile image/*" title="Insert picture (or just drag &amp; drop)"><i class="fa fa-picture-o"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="editor">
+    [type here]
+  </div>
+
+</div>
+<script>
+$(function(){
+	function showErrorAlert (reason, detail) {
+		var msg='';
+		if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+		else console.log("error uploading file", reason, detail);
+    $('<div class="alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button><strong>File upload error</strong> '+msg+'</div>').prependTo('#alerts');
+	}
+
+	$('#editor').tinyeditor({ fileUploadError: showErrorAlert} );
+});
+</script>
+
+</html>
