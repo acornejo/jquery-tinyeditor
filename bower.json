@@ -1,0 +1,30 @@
+{
+  "name": "jquery-tinyeditor",
+  "version": "0.1.0",
+  "homepage": "https://github.com/acornejo/jquery-tinyeditor",
+  "authors": [
+    "Alex Cornejo <acornejo@gmail.com>"
+  ],
+  "description": "Tiny WYIWYG editor for jquery",
+  "main": "jquery.tinyeditor.js",
+  "keywords": [
+    "jquery",
+    "editor",
+    "wyiwyg",
+    "contenteditable"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "font-awesome": "~4.0.3",
+    "jquery.hotkeys": "jeresig/jquery.hotkeys#~0.1.0",
+    "jquery": "~2.0.3"
+  }
+}
