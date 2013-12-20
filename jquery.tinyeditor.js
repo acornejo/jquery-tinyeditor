@@ -55,9 +55,8 @@ function factory($) {
       },
       getCurrentRange = function () {
         var sel = window.getSelection();
-        if (sel.getRangeAt && sel.rangeCount) {
+        if (sel.getRangeAt && sel.rangeCount)
           return sel.getRangeAt(0);
-        }
       },
       saveSelection = function () {
         selectedRange = getCurrentRange();
